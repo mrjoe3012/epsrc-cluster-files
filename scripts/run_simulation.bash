@@ -65,7 +65,7 @@ run_and_log timeout "${timeout_seconds}" ros2 service call /sim_data_collection/
 if [[ "${?}" -ne "0" ]]; then
         die "Unable to cleanly stop the data collection service."
 else
-        log "Waiting fro sim_data_collection to exit..."
+        log "Waiting for sim_data_collection to exit..."
         wait "${data_pid}" || die "sim_data_collection exited with nonzero error code ${?}"
         log "Finished cleanly. Exiting."
 fi
