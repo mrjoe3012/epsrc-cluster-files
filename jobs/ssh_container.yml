@@ -83,9 +83,9 @@ spec:
         # will be visible inside this container
         env:
         - name: HOME
-          value: "/nfs/pseudo_home"
+          value: "/nfs/home"
         - name: ROS_HOME
-          value: "/nfs/pseudo_home/.ros/"
+          value: "/nfs/home/.ros/"
         - name: UGRWS_DIR
           value: "/nfs/ugrdv/"
         - name: EUFS_MASTER
