@@ -32,6 +32,7 @@ run_and_log mkdir -p "${log_folder}"
 
 ros2 launch ugrdv_backup_main eufs_simulatedperception_comms.launch.py \
         &> "${log_folder}/ugrdv_backup_main.log" &
+ugrdv_pid="${!}"
 
 ros2 launch eufs_launcher simulation.launch.py \
         "track:=${next_track}" \
@@ -56,7 +57,7 @@ fi
 ros2 run sim_data_collection data_collector --ros-args \
         -p "database:=${next_track}.db3" \
         &> "${log_folder}/sim_data_collection.log" &
-data_pid="${?}"
+data_pid="${!}"
 tail -f "${log_folder}/sim_data_collection.log" &
 log "Waiting for simulation to end."
 run_and_log sleep "${simulation_seconds}"
