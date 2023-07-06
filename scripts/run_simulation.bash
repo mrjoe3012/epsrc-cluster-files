@@ -30,7 +30,10 @@ log "next_track: ${next_track}"
 log_folder="${HOME}/.run_simulation/${next_track}"
 run_and_log mkdir -p "${log_folder}"
 
-run_and_log ros2 launch ugrdv_backup_main eufs_simulated_perception_comms.launch.py \
+ros2 launch ugrdv_backup_main eufs_simulatedperception_comms.launch.py \
+        &> "${log_folder}/ugrdv_backup_main.log" &
+
+ros2 launch eufs_launcher simulation.launch.py \
         "track:=${next_track}" \
         "commandMode:=${acceleration}" \
         "rviz:=false" \
@@ -50,7 +53,8 @@ timeout "${timeout_seconds}" ros2 service call /ros_can/set_mission eufs_msgs/Se
 if [[ "${?}" -ne "0" ]]; then
         die "Unable to call EUFS service."
 fi
-run_and_log ros2 run sim_data_collection data_collector --ros-args -p "database:=${next_track}.db3" \
+ros2 run sim_data_collection data_collector --ros-args \
+        -p "database:=${next_track}.db3" \
         &> "${log_folder}/sim_data_collection.log" &
 data_pid="${?}"
 tail -f "${log_folder}/sim_data_collection.log" &
