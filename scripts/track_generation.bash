@@ -14,7 +14,7 @@ source "${SCRIPTS_REPO}/scripts/utils.bash"
 source_ros
 
 log "Spawning instance..."
-next_seed=$("${SCRIPTS_REPO}/scripts/next_seed.py ${HOME}/seed.txt")
+next_seed=$("${SCRIPTS_REPO}/scripts/next_value.py ${HOME}/seed.txt")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get next seed."; fi
 eufs_tracks_share=$("${SCRIPTS_REPO}/scripts/get_pkg_share.py eufs_tracks")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get eufs_tracks share directory"; fi
