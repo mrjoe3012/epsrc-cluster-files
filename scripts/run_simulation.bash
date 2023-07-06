@@ -24,7 +24,7 @@ simulation_seconds="${1}"
 
 run_and_log cd "${UGRWS_DIR}/ros2_ws" || die "Unable to CD to UGRWS_DIR."
 
-nest_track=$("${SCRIPTS_REPO}/scripts/next_track.py") || die "Couldn't fetch next track."
+next_track=$("${SCRIPTS_REPO}/scripts/next_track.py") || die "Couldn't fetch next track."
 log "next_track: ${next_track}"
 
 log_folder="${HOME}/.run_simulation/${next_track}"
