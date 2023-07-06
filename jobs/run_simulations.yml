@@ -93,7 +93,7 @@ spec:
         - name: DATA_COLLECTION_REPO
           value: "/nfs/sim_data_collection"
         - name: SCRIPTS_REPO
-          value: "/nfs/cluter-files"
+          value: "/nfs/cluster-files"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:
