@@ -46,7 +46,7 @@ run_and_log sleep 30
 timeout_seconds=120
 log "Waiting for EUFS_SIM service."
 timeout "${timeout_seconds}" bash -c "while ! ros2 service list | grep ros_can/set_mission &> /dev/null; do sleep 1; done; echo Found Service."
-run_and_log timeout "${timeout_seconds}" ros2 service call /ros_can/set_mission eufs_msgs/SetCanState '{"ami_state" : 14, "as_state": 1}'
+timeout "${timeout_seconds}" ros2 service call /ros_can/set_mission eufs_msgs/SetCanState '{"ami_state" : 14, "as_state": 1}'
 if [[ "${?}" -ne "0" ]]; then
         die "Unable to call EUFS service."
 fi
