@@ -35,7 +35,7 @@ ros2 launch ugrdv_backup_main eufs_simulatedperception_comms.launch.py \
 
 ros2 launch eufs_launcher simulation.launch.py \
         "track:=${next_track}" \
-        "commandMode:=${acceleration}" \
+        "commandMode:=acceleration" \
         "rviz:=false" \
         "show_rqt_gui:=false" \
         "pub_ground_truth:=true" \
