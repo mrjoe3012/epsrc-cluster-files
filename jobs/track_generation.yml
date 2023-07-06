@@ -39,7 +39,7 @@ spec:
         image: registry.gitlab.com/ugrdv/ugrdv/ugrdv:joe-experimental
         imagePullPolicy: Always
         # the container will run the secondjob.py script from your external filespace 
-        command: ["/nfs/track_generation.bash", "1"]
+        command: ["/nfs/cluster-files/scripts/track_generation.bash"]
         securityContext:
           runAsUser: 1001640000
 
