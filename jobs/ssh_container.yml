@@ -82,14 +82,18 @@ spec:
         # example of defining an environment variable and its value, so that they
         # will be visible inside this container
         env:
-        - name: UGRWS_DIR
-          value: "/nfs/ugrdv/"
         - name: HOME
           value: "/nfs/pseudo_home"
         - name: ROS_HOME
           value: "/nfs/pseudo_home/.ros/"
+        - name: UGRWS_DIR
+          value: "/nfs/ugrdv/"
         - name: EUFS_MASTER
           value: "/nfs/ugrdv/ros2_ws/src/eufs_sim"
+        - name: SCRIPTS_REPO
+          value: "/nfs/cluster-files"
+        - name: DATA_COLLECTION_REPO
+          value: "/nfs/sim_data_collection"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:
