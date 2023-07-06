@@ -27,5 +27,5 @@ function source_ros () {
     if [[ -z "${UGRWS_DIR}" ]]; then die "UGRWS_DIR not set."; fi
     if [[ -z "${DATA_COLLECTION_REPO}" ]]; then die "DATA_COLLECTION_REPO not set."; fi
     source "${DATA_COLLECTION_REPO}/install/setup.bash"
-    source "${UGRWS_DIR}/install/setup.bash"
+    source "${UGRWS_DIR}/ros2_ws/install/setup.bash"
 }
