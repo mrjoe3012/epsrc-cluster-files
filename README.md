@@ -18,3 +18,4 @@ Please ensure the following environment variables are set before running any scr
 | UGRWS_DIR | The path to the root directory of the UGRDV repository. |
 | SCRIPTS_REPO | The path to the root directory of this repository. |
 | DATA_COLLECTION_REPO | The path to the root directory of the sim_data_collection data logger repository. |
+| EUFS_MASTER | The path to the root directory of the EUFS Sim repo. |
