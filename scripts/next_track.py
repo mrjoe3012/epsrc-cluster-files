@@ -1,9 +1,19 @@
 #!/bin/python3
+################################################################
+## This script makes use of the next_value.py script to       ##
+## retrive an index, it the uses it to retrieve the correspo- ##
+## nding racetrack name.                                      ##
+################################################################
+
 import subprocess, json, os, itertools
 from ament_index_python import get_package_share_directory
 
 def get_track_index():
-    command = ["/nfs/next_seed.py", "/nfs/track.txt"]
+    assert "SCRIPTS_REPO" in os.environ
+    command = [
+        f"{os.environ['SCRIPTS_REPO']}/scripts/next_track.py",
+        f"{os.environ['HOME']}/track.txt",
+    ]
     index = int(subprocess.check_output(command))
     return index
 
