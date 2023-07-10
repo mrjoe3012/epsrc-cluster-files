@@ -62,19 +62,20 @@ tail -f "${log_folder}/sim_data_collection.log" &
 log "Waiting for simulation to end."
 run_and_log sleep "${simulation_seconds}"
 log "Time's up, stopping data collection."
+database="$("${SCRIPTS_REPO}/scripts/get_pkg_share.py" sim_data_collection)/${next_track}.db3"
 run_and_log timeout "${timeout_seconds}" ros2 service call /sim_data_collection/stop_collection std_srvs/Trigger
 if [[ "${?}" -ne "0" ]]; then
+        rm ${database}
         die "Unable to cleanly stop the data collection service."
 else
         log "Waiting for sim_data_collection to exit..."
         wait "${data_pid}" || die "sim_data_collection exited with nonzero error code ${?}"
-        database="$("${SCRIPTS_REPO}/scripts/get_pkg_share.py" sim_data_collection)/${next_track}.db3"
         log "Running integrity check on '${database}'"
         run_and_log ros2 run sim_data_collection integrity_check "${database}" \
                 &> "${log_folder}/integrity_check.log"
         if [[ "${?}" -ne "0" ]]; then
-                echo "Integrity check failed. Exiting."
-                exit 1
+                rm ${database}
+                die "Integrity check failed. Exiting."
         fi
         log "Finished cleanly. Exiting."
 fi
