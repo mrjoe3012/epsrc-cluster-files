@@ -68,6 +68,14 @@ if [[ "${?}" -ne "0" ]]; then
 else
         log "Waiting for sim_data_collection to exit..."
         wait "${data_pid}" || die "sim_data_collection exited with nonzero error code ${?}"
+        database="$("${SCRIPTS_REPO}/scripts/get_pkg_share.py" sim_data_collection)/${next_track}.db3"
+        log "Running integrity check on '${database}'"
+        run_and_log ros2 run sim_data_collection integrity_check "${database}" \
+                &> "${log_folder}/integrity_check.log"
+        if [[ "${?}" -ne "0" ]]; then
+                echo "Integrity check failed. Exiting."
+                exit 1
+        fi
         log "Finished cleanly. Exiting."
 fi
 
