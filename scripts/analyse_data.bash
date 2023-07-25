@@ -24,6 +24,6 @@ num_dbs=${#databases[@]}
 echo "num_dbs: ${#databases[@]}"
 
 process_number=$("${SCRIPTS_REPO}/scripts/next_value.py" ${HOME}/proc_num.txt)
-db_idx=$((((num_dbs/process_number)*num_to_process)+1))
+db_idx=$((((num_dbs/num_to_process)*process_number)+1))
 echo "db_idx: ${db_idx} process_number: ${process_number} databases: ${databases[@]} num_dbs: ${num_dbs}"
 ros2 run sim_data_collection analysis analyse analysis.json "${databases[@]:db_idx:num_to_process}"
