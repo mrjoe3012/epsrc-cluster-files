@@ -24,7 +24,7 @@ if ! [[ -d  ${datasets_dir} ]]; then
     die "${datasets_dir} is not a valid directory."
 fi
 
-databases=("${datasets_dir}/*")
+databases=("${datasets_dir}"/*)
 num_dbs=${#databases[@]}
 
 process_number=$("${SCRIPTS_REPO}/scripts/next_value.py" ${HOME}/proc_num.txt)
