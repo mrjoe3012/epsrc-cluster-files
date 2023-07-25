@@ -27,6 +27,6 @@ fi
 databases=("${datasets_dir}/*")
 num_dbs=${#databases[@]}
 
-process_number=$("${SCRIPTS_REPO}/scripts/new_value.py /nfs/home/proc_num.txt")
+process_number=$("${SCRIPTS_REPO}/scripts/next_value.py /nfs/home/proc_num.txt")
 db_idx=$((num_dbs*num_to_process/process_number))
 ros2 run sim_data_collection analysis analyse "${databases[db_idx:num_to_process]}"
