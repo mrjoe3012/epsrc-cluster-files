@@ -15,7 +15,7 @@ if [[ "${#}" -lt "2" ]]; then
 fi
 
 num_to_process="${1}"
-databases="${@:2}"
+databases=(${@:2})
 
 echo "num_to_process: ${num_to_process}"
 echo "datasets: ${databases[@]}"
