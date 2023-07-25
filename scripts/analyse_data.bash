@@ -10,7 +10,7 @@ source "${SCRIPTS_REPO}/scripts/utils.bash" || exit 1
 
 run_and_log source_ros
 
-if [[ "${#}" -ne "2" ]]; then
+if [[ "${#}" -lt "2" ]]; then
     die "Usage: analyse_data.bash <num dbs to process> <dbs>"
 fi
 
