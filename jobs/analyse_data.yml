@@ -14,9 +14,9 @@ spec:
   # this controls how many times the pod created to run the container defined
   # below will be restarted if an error occurs. By default the container will
   # be restarted up to 6 times which probably isn't what you want!
-  parallelism: 50
-  completions: 50
-  backoffLimit: 1000
+  parallelism: 1000
+  completions: 1000
+  backoffLimit: 0
   template:        
     metadata:
       name: analyse-data
@@ -117,4 +117,4 @@ spec:
       # determines what Kubernetes will do if the container inside the 
       # pod fails to start or crashes. This just tells it to give up
       # without retrying.
-      restartPolicy: OnFailure
+      restartPolicy: Never
