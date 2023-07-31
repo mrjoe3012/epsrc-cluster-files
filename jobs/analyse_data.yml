@@ -40,7 +40,7 @@ spec:
         imagePullPolicy: Always
         # the container will run the secondjob.py script from your external filespace 
         command: ["bash", "-c"]
-        args: ["cd ${HOME}; /nfs/cluster-files/scripts/analyse_data.bash 10 /nfs/datasets/sim_data_v2/*"]
+        args: ["cd ${HOME}; /nfs/cluster-files/scripts/analyse_data.bash 10 /nfs/datasets/sim_data_v3/*"]
         securityContext:
           runAsUser: 1001640000
 
