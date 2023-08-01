@@ -44,6 +44,12 @@ ros2 launch eufs_launcher simulation.launch.py \
         &> "${log_folder}/eufs_launcher.log" &
 eufs_pid="${!}"
 
+log "Starting perception model."
+
+ros2 run sim_data_collection perception_model --ros-args -p model:=realistic \
+        &> "${log_folder}/perception_model.log" &
+perception_model_pid="${!}"
+
 log "Waiting for nodes to spin up."
 run_and_log sleep 30
 
