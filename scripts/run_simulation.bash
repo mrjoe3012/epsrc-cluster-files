@@ -16,11 +16,12 @@ source "${SCRIPTS_REPO}/scripts/utils.bash" || exit 1
 
 run_and_log source_ros
 
-if [[ "${#}" -ne "1" ]]; then
-        die "Usage: run_simulation.bash <simulation duration in seconds>"
+if [[ "${#}" -ne "2" ]]; then
+        die "Usage: run_simulation.bash <simulation duration in seconds> <perception profile>"
 fi
 
 simulation_seconds="${1}"
+perception_profile="${2}"
 
 run_and_log cd "${UGRWS_DIR}/ros2_ws" || die "Unable to CD to UGRWS_DIR."
 
@@ -46,7 +47,7 @@ eufs_pid="${!}"
 
 log "Starting perception model."
 
-ros2 run sim_data_collection perception_model --ros-args -p model:=realistic \
+ros2 run sim_data_collection perception_model --ros-args -p "model:=${perception_profile}" \
         &> "${log_folder}/perception_model.log" &
 perception_model_pid="${!}"
 
