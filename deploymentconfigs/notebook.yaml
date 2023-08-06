@@ -1,0 +1,54 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: pythonmlnotebookgpu
+  namespace: 2663460aproject
+spec:
+  replicas: 1
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      labels:
+        app: pythonMLNotebook
+        deploymentconfig: pythonMLNotebookGPU
+        group: 2663460a
+    spec:
+      nodeSelector:
+        node-role.ida/gputitan: "true"
+        # node-role.ida/gpu2080ti: "true"
+      containers:
+      - name: notebook-container
+        image: joe3012/epsrc23:latest
+        resources:
+          requests:
+            cpu: "1500m"
+            memory: "4Gi"
+            nvidia.com/gpu: 1
+          limits:
+            cpu: "2500m"
+            memory: "16Gi"
+            nvidia.com/gpu: 1
+        command:
+          - '/bin/bash'
+        args:
+          - '-c'
+          - 'source /opt/ros/humble/setup.bash; source /nfs/ugrdv/ros2_ws/install/setup.bash; jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="/nfs"'
+          - 'notebook'
+          - '--no-browser'
+          - '--ip=0.0.0.0'
+          - '--allow-root'
+          - '--NotebookApp.token='
+          - '--notebook-dir="/nfs/"'
+        ports:
+          - containerPort: 8888
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /nfs/
+            name: nfs-access
+      securityContext: {}
+      serviceAccount: containerroot
+      volumes:
+      - name: nfs-access
+        persistentVolumeClaim:
+          claimName: 2663460avol1claim
