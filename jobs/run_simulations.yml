@@ -39,7 +39,7 @@ spec:
         image: registry.gitlab.com/ugrdv/ugrdv/ugrdv:joe-experimental
         imagePullPolicy: Always
         # the container will run the secondjob.py script from your external filespace 
-        command: ["/nfs/cluster-files/scripts/run_simulation.bash", "120", "good"]
+        command: ["/nfs/cluster-files/scripts/run_simulation_loop.bash", "100", "120", "good"]
         securityContext:
           runAsUser: 1001640000
 
