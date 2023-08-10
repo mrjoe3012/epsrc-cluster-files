@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ "${#}" -ne "3" ]]; then
     echo "Usage: run_simulation_loop.bash <number of sims to run> <seconds> <perception>"
     exit 1
