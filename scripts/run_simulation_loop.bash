@@ -8,7 +8,7 @@ num="${1}"
 seconds="${2}"
 perception="${3}"
 
-for ((i=1;i<num;i++)); do
+for ((i=0;i<num;i++)); do
     code=1
     while [[ "${code}" -ne "0" ]]; do
         /nfs/cluster-files/scripts/run_simulation.bash "${seconds}" "${perception}"
