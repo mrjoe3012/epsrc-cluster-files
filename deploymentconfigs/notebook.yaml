@@ -22,12 +22,12 @@ spec:
         image: joe3012/epsrc23:latest
         resources:
           requests:
-            cpu: "1500m"
-            memory: "4Gi"
+            cpu: "2000m"
+            memory: "16Gi"
             nvidia.com/gpu: 1
           limits:
-            cpu: "2500m"
-            memory: "16Gi"
+            cpu: "3000m"
+            memory: "24Gi"
             nvidia.com/gpu: 1
         command:
           - '/bin/bash'
