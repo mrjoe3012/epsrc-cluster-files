@@ -33,7 +33,7 @@ spec:
           - '/bin/bash'
         args:
           - '-c'
-          - 'source /opt/ros/humble/setup.bash; source /nfs/ugrdv/ros2_ws/install/setup.bash; jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="/nfs/notebook"'
+          - 'source /opt/ros/humble/setup.bash; source /nfs/ugrdv/ros2_ws/install/setup.bash; jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="/nfs/vehicle-model"'
         ports:
           - containerPort: 8888
         imagePullPolicy: IfNotPresent
