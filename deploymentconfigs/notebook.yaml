@@ -30,20 +30,14 @@ spec:
             memory: "32Gi"
             nvidia.com/gpu: 1
         env:
-        - name: HOME
-        value: "/nfs/home"
-        - name: ROS_HOME
-          value: "/nfs/home/.ros/"
-        - name: UGRWS_DIR
-          value: "/nfs/ugrdv/"
-        - name: EUFS_MASTER
-          value: "/nfs/ugrdv/ros2_ws/src/eufs_sim"
-        - name: DATA_COLLECTION_REPO
-          value: "/nfs/sim_data_collection"
         - name: SCRIPTS_REPO
           value: "/nfs/cluster-files"
         - name: NOTEBOOK_REPO
           value: "/nfs/vehicle-model"
+        - name: UGRWS_DIR
+          value: "/nfs/ugrdv"
+        - name: DATA_COLLECTION_REPO
+          value: "/nfs/sim_data_collection"
         command:
           - '/nfs/cluster-files/scripts/start_notebook.bash'
         ports:
