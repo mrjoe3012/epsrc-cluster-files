@@ -29,11 +29,23 @@ spec:
             cpu: "3000m"
             memory: "32Gi"
             nvidia.com/gpu: 1
+        env:
+        - name: HOME
+        value: "/nfs/home"
+        - name: ROS_HOME
+          value: "/nfs/home/.ros/"
+        - name: UGRWS_DIR
+          value: "/nfs/ugrdv/"
+        - name: EUFS_MASTER
+          value: "/nfs/ugrdv/ros2_ws/src/eufs_sim"
+        - name: DATA_COLLECTION_REPO
+          value: "/nfs/sim_data_collection"
+        - name: SCRIPTS_REPO
+          value: "/nfs/cluster-files"
+        - name: NOTEBOOK_REPO
+          value: "/nfs/vehicle-model"
         command:
-          - '/bin/bash'
-        args:
-          - '-c'
-          - 'source /opt/ros/humble/setup.bash; source /nfs/ugrdv/ros2_ws/install/setup.bash; jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="/nfs/vehicle-model"'
+          - '/nfs/cluster-files/scripts/start_notebook.bash'
         ports:
           - containerPort: 8888
         imagePullPolicy: IfNotPresent
