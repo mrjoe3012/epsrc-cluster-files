@@ -83,17 +83,15 @@ spec:
         # will be visible inside this container
         env:
         - name: HOME
-          value: "/nfs/home"
+          value: "/nfs/fresh/"
         - name: ROS_HOME
-          value: "/nfs/home/.ros/"
-        - name: UGRWS_DIR
-          value: "/nfs/ugrdv/"
+          value: "/nfs/fresh/.ros/"
+        - name: ROS_MASTER
+          value: "/opt/ros/humble/setup.bash"
         - name: EUFS_MASTER
-          value: "/nfs/ugrdv/ros2_ws/src/eufs_sim"
-        - name: DATA_COLLECTION_REPO
-          value: "/nfs/sim_data_collection"
-        - name: SCRIPTS_REPO
-          value: "/nfs/cluster-files"
+          value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
+        - name: EPSRC_MASTER
+          value: "/nfs/epsrc-2023"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:

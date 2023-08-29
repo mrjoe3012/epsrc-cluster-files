@@ -30,14 +30,16 @@ spec:
             memory: "32Gi"
             nvidia.com/gpu: 1
         env:
-        - name: SCRIPTS_REPO
-          value: "/nfs/cluster-files"
-        - name: NOTEBOOK_REPO
-          value: "/nfs/vehicle-model"
-        - name: UGRWS_DIR
-          value: "/nfs/ugrdv"
-        - name: DATA_COLLECTION_REPO
-          value: "/nfs/sim_data_collection"
+        - name: HOME
+          value: "/nfs/fresh/"
+        - name: ROS_HOME
+          value: "/nfs/fresh/.ros/"
+        - name: ROS_MASTER
+          value: "/opt/ros/humble/setup.bash"
+        - name: EUFS_MASTER
+          value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
+        - name: EPSRC_MASTER
+          value: "/nfs/epsrc-2023"
         command:
           - '/nfs/cluster-files/scripts/start_notebook.bash'
         ports:

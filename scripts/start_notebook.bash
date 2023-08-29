@@ -1,18 +1,14 @@
 #!/bin/bash
-if [[ -z "${SCRIPTS_REPO}" ]]; then
-    echo "SCRIPTS_REPO not set."
+if [[ -z "${EPSRC_MASTER}" ]]; then
+    echo "EPSRC_MASTER not set."
     exit 1
 fi
 
-if [[ -z "${NOTEBOOK_REPO}" ]]; then
-    echo "NOTEBOOK_REPO not set."
-    exit 1
-fi
+source "${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/utils.bash"
 
-source "${SCRIPTS_REPO}/scripts/utils.bash"
 source_ros
-pip install tqdm ray[tune]
-pip install -U ipywidgets
-cd "${NOTEBOOK_REPO}" || die "Couldn't cd into NOTEBOOK_REPO"
+run_and_log pip install tqdm ray[tune]
+run_and_log pip install -U ipywidgets
+cd "${EPSRC_MASTER}/epsrc-vehicle-model" || die "Couldn't cd into EPSRC_MASTER/epsrc-vehicle-model"
 ./build.bash
-jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="${NOTEBOOK_REPO}"
+jupyter notebook --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --notebook-dir="${EPSRC_MASTER}/epsrc-2023-vehicle-model"

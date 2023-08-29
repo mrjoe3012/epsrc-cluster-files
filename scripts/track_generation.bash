@@ -5,22 +5,19 @@
 ## ugh the headless track generator's config file.            ##
 ################################################################
 
-if [[ -z "${SCRIPTS_REPO}" ]]; then
-        echo "SCRIPTS_REPO not set."
+if [[ -z "${EPSRC_MASTER}" ]]; then
+        echo "EPSRC_MASTER not set."
         exit 1
 fi
 
-source "${SCRIPTS_REPO}/scripts/utils.bash"
+source "${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/utils.bash"
 source_ros
 
 log "Spawning instance..."
-next_seed=$("${SCRIPTS_REPO}/scripts/next_value.py" "${HOME}/seed.txt")
+next_seed=$("${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/next_value.py" "${HOME}/seed.txt")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get next seed."; fi
-eufs_tracks_share=$("${SCRIPTS_REPO}/scripts/get_pkg_share.py" "eufs_tracks")
+eufs_tracks_share=$("${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/get_pkg_share.py" "eufs_tracks")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get eufs_tracks share directory"; fi
-
-log "Next seed: ${next_seed}"
-log "eufs_tracks_share: ${eufs_tracks_share}"
 
 run_and_log ros2 run eufs_tracks headless_track_generator --ros-args \
         --params-file "${eufs_tracks_share}/params/headless_track_generator.yaml" \
