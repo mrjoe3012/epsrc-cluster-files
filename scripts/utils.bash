@@ -5,7 +5,7 @@
 ################################################################
 
 set -T
-trap 'test "$FUNCNAME" = run_and_log || trap_saved_commands="${BASH_COMMAND}"'
+trap 'test "$FUNCNAME" = run_and_log || trap_saved_commands="${BASH_COMMAND}"' DEBUG
 
 # echoes its arguments
 function log () {
