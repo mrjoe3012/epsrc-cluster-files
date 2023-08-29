@@ -91,7 +91,7 @@ spec:
         - name: EUFS_MASTER
           value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
         - name: EPSRC_MASTER
-          value: "/nfs/epsrc-2023"
+          value: "/nfs/fresh/epsrc-2023"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:

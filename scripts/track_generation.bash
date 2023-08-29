@@ -10,13 +10,13 @@ if [[ -z "${EPSRC_MASTER}" ]]; then
         exit 1
 fi
 
-source "${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/utils.bash"
+source "${EPSRC_MASTER}/epsrc-cluster-files/scripts/utils.bash"
 source_ros
 
 log "Spawning instance..."
-next_seed=$("${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/next_value.py" "${HOME}/seed.txt")
+next_seed=$("${EPSRC_MASTER}/epsrc-cluster-files/scripts/next_value.py" "${HOME}/seed.txt")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get next seed."; fi
-eufs_tracks_share=$("${EPSRC_MASTER}/epsrc-2023-cluster-files/scripts/get_pkg_share.py" "eufs_tracks")
+eufs_tracks_share=$("${EPSRC_MASTER}/epsrc-cluster-files/scripts/get_pkg_share.py" "eufs_tracks")
 if [[ "${?}" -ne "0" ]]; then die "Unable to get eufs_tracks share directory"; fi
 
 run_and_log ros2 run eufs_tracks headless_track_generator --ros-args \
