@@ -9,9 +9,9 @@ import subprocess, json, os, itertools
 from ament_index_python import get_package_share_directory
 
 def get_track_index():
-    assert "SCRIPTS_REPO" in os.environ
+    assert "EPSRC_MASTER" in os.environ
     command = [
-        f"{os.environ['SCRIPTS_REPO']}/scripts/next_value.py",
+        f"{os.environ['EPSRC_MASTER']}/epsrc-cluster-files/scripts/next_value.py",
         f"{os.environ['HOME']}/track.txt",
     ]
     index = int(subprocess.check_output(command))
