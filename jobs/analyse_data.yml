@@ -87,8 +87,8 @@ spec:
           value: "/nfs/fresh/"
         - name: ROS_HOME
           value: "/nfs/fresh/.ros/"
-        - name: ROS_MASTER
-          value: "/opt/ros/humble/setup.bash"
+        - name: ROS_INSTALL
+          value: "/opt/ros/humble"
         - name: EUFS_MASTER
           value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
         - name: EPSRC_MASTER
