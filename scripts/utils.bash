@@ -4,8 +4,7 @@
 ## used in other scripts.                                     ##
 ################################################################
 
-set -T
-trap 'test "$FUNCNAME" = run_and_log || trap_saved_commands="${BASH_COMMAND}"' DEBUG
+set -x
 
 # echoes its arguments
 function log () {
@@ -14,7 +13,6 @@ function log () {
 
 # logs a command before running it
 function run_and_log () {
-    log "${trap_saved_command#* }"
     "${@}"
 }
 
