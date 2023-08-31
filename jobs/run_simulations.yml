@@ -15,7 +15,7 @@ spec:
   # below will be restarted if an error occurs. By default the container will
   # be restarted up to 6 times which probably isn't what you want!
   parallelism: 100
-  completions: 10000
+  completions: 5
   backoffLimit: 1000
   template:        
     metadata:
@@ -36,10 +36,11 @@ spec:
         # - Tensorflow 2.0.0
         # - GPU support (CUDA libraries etc)
         # - Python 3
-        image: registry.gitlab.com/ugrdv/ugrdv/ugrdv:joe-experimental
-        imagePullPolicy: Always
+        image: joe3012/epsrc23:latest
+        imagePullPolicy: IfNotPresent
         # the container will run the secondjob.py script from your external filespace 
-        command: ["/nfs/cluster-files/scripts/run_simulation_loop.bash", "100", "120", "good"]
+        command: ["bash"]
+        args: ["-c", "${EPSRC_MASTER}/epsrc-cluster-files/scripts/run_simulation.bash 120 realistic"]
         securityContext:
           runAsUser: 1001640000
 

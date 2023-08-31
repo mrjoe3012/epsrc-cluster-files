@@ -14,7 +14,7 @@ spec:
   # this controls how many times the pod created to run the container defined
   # below will be restarted if an error occurs. By default the container will
   # be restarted up to 6 times which probably isn't what you want!
-  parallelism: 1000
+  parallelism: 100
   completions: 1000
   backoffLimit: 0
   template:        

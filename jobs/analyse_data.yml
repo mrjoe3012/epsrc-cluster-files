@@ -37,7 +37,7 @@ spec:
         # - GPU support (CUDA libraries etc)
         # - Python 3
         image: registry.gitlab.com/ugrdv/ugrdv/ugrdv:joe-experimental
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         # the container will run the secondjob.py script from your external filespace 
         command: ["bash", "-c"]
         args: ["cd ${HOME}; /nfs/cluster-files/scripts/analyse_data.bash 10 /nfs/datasets/sim_data_v3/*"]

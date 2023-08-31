@@ -38,7 +38,7 @@ spec:
         # - Python 3
         # image: registry.gitlab.com/ugrdv/ugrdv/ugrdv:joe-experimental
         image: joe3012/epsrc23:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         # the container will run the secondjob.py script from your external filespace 
         command: ["sleep", "infinity"]
         securityContext:
