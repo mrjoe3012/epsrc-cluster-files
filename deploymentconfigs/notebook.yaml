@@ -15,33 +15,33 @@ spec:
         group: 2663460a
     spec:
       nodeSelector:
-        node-role.ida/gputitan: "true"
-        # node-role.ida/gpu2080ti: "true"
+        # node-role.ida/gputitan: "true"
+        node-role.ida/gpu2080ti: "true"
       containers:
       - name: notebook-container
         image: joe3012/epsrc23:latest
         resources:
           requests:
             cpu: "2000m"
-            memory: "32Gi"
+            memory: "16Gi"
             nvidia.com/gpu: 1
           limits:
             cpu: "3000m"
-            memory: "32Gi"
+            memory: "16Gi"
             nvidia.com/gpu: 1
         env:
         - name: HOME
-          value: "/nfs/fresh/"
+          value: "/nfs"
         - name: ROS_HOME
-          value: "/nfs/fresh/.ros/"
+          value: "/nfs/.ros"
         - name: ROS_INSTALL
           value: "/opt/ros/humble"
         - name: EUFS_MASTER
-          value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
+          value: "/nfs/epsrc-2023/epsrc-eufs-sim"
         - name: EPSRC_MASTER
-          value: "/nfs/fresh/epsrc-2023"
+          value: "/nfs/epsrc-2023"
         command:
-          - '/nfs/cluster-files/scripts/start_notebook.bash'
+          - '/nfs/epsrc-2023/epsrc-cluster-files/scripts/start_notebook.bash'
         ports:
           - containerPort: 8888
         imagePullPolicy: IfNotPresent

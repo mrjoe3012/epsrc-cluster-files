@@ -84,15 +84,15 @@ spec:
         # will be visible inside this container
         env:
         - name: HOME
-          value: "/nfs/fresh/"
+          value: "/nfs"
         - name: ROS_HOME
-          value: "/nfs/fresh/.ros/"
+          value: "/nfs/.ros"
         - name: ROS_INSTALL
           value: "/opt/ros/humble"
         - name: EUFS_MASTER
-          value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
+          value: "/nfs/epsrc-2023/epsrc-eufs-sim"
         - name: EPSRC_MASTER
-          value: "/nfs/fresh/epsrc-2023"
+          value: "/nfs/epsrc-2023"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:

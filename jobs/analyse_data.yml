@@ -40,7 +40,7 @@ spec:
         imagePullPolicy: IfNotPresent
         # the container will run the secondjob.py script from your external filespace 
         command: ["bash", "-c"]
-        args: ["cd ${HOME}; ${EPSRC_MASTER}/scripts/analyse_data.bash 10 /nfs/fresh/sim_data/*.db3"]
+        args: ["cd ${HOME}; ${EPSRC_MASTER}/epsrc-cluster-files/scripts/analyse_data.bash 10 /nfs/epsrc-2023/install/sim_data_collection/share/sim_data_collection/*.db3"]
         securityContext:
           runAsUser: 1001640000
 
@@ -84,15 +84,15 @@ spec:
         # will be visible inside this container
         env:
         - name: HOME
-          value: "/nfs/fresh/"
+          value: "/nfs"
         - name: ROS_HOME
-          value: "/nfs/fresh/.ros/"
+          value: "/nfs/.ros/"
         - name: ROS_INSTALL
           value: "/opt/ros/humble"
         - name: EUFS_MASTER
-          value: "/nfs/fresh/epsrc-2023/epsrc-eufs-sim"
+          value: "/nfs/epsrc-2023/epsrc-eufs-sim"
         - name: EPSRC_MASTER
-          value: "/nfs/fresh/epsrc-2023"
+          value: "/nfs/epsrc-2023"
       # this defines a volume called nfs-access which corresponds to your cluster
       # filespace. 
       volumes:
